@@ -103,6 +103,7 @@
   "settings.general": "Основное",
   "settings.general.language": "Язык",
   "settings.general.language.en": "Английский (English)",
+  "settings.general.language.ee": "Английский (Spanish)",
   "settings.general.language.de": "Немецкий (German)",
   "settings.general.language.ru": "Русский (Russian)",
   "settings.general.language.missing-hint": "Нет вашего языка?",

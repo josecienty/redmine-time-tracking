@@ -1,0 +1,10 @@
+{
+    "extName": {
+        "message": "Seguimiento de Tiempo en Redmine",
+        "description": "Nombre de la extensión"
+    },
+    "extDesc": {
+        "message": "Temporizador de inicio-detención para Redmine",
+        "description": "Descripción de la extensión"
+    }
+}

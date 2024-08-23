@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import browser from 'webextension-polyfill';
 
 const Storage = {
-  getItem: async (key: string) => (await chrome.storage.local.get(key))[key],
-  setItem: (key: string, value: string) => chrome.storage.local.set({ [key]: value }),
-  removeItem: (key: string) => chrome.storage.local.remove(key),
+  getItem: async (key: string) => (await browser.storage.local.get(key))[key],
+  setItem: (key: string, value: string) => browser.storage.local.set({ [key]: value }),
+  removeItem: (key: string) => browser.storage.local.remove(key),
   serialize: JSON.stringify,
   deserialize: JSON.parse,
 };
@@ -11,7 +12,7 @@ const Storage = {
 export const getStorage = async <T>(name: string, defaultValue: T): Promise<T> => {
   const data = await Storage.getItem(name);
   if (!data) return defaultValue;
-  return Storage.deserialize(data);
+  return Storage.deserialize(data as string);
 };
 
 export const setStorage = <T>(name: string, data: T) => {
@@ -35,13 +36,13 @@ const useStorage = <T>(name: string, defaultValue: T) => {
 
   // On chrome storage change => load data
   useEffect(() => {
-    const onChange: Parameters<typeof chrome.storage.local.onChanged.addListener>[0] = (changes) => {
+    const onChange: Parameters<typeof browser.storage.local.onChanged.addListener>[0] = (changes) => {
       if (!changes[name]) return; // other changed
-      setLocalData(Storage.deserialize(changes[name].newValue));
+      setLocalData(Storage.deserialize(changes[name].newValue as string));
     };
 
-    chrome.storage.local.onChanged.addListener(onChange);
-    return () => chrome.storage.local.onChanged.removeListener(onChange);
+    browser.storage.local.onChanged.addListener(onChange);
+    return () => browser.storage.local.onChanged.removeListener(onChange);
   }, [name]);
 
   return { data: localData, setData, isLoading };

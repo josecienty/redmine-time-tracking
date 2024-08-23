@@ -14,7 +14,7 @@
 [![Install Button]][Install Link]
 
 [Install Button]: https://img.shields.io/badge/Install-71b500?style=for-the-badge&logoColor=white&logo=google-chrome
-[Install Link]: https://chrome.google.com/webstore/detail/redmine-time-tracking/ldcanhhkffokndenejhafhlkapflgcjg "Open in chrome web store"
+[Install Link]: https://browser.google.com/webstore/detail/redmine-time-tracking/ldcanhhkffokndenejhafhlkapflgcjg "Open in chrome web store"
 
 # Features
 
@@ -68,4 +68,4 @@ _Tested with Google Chrome Version 126_
 
 # Credits
 
-Logo is Copyright (C) 2009 Martin Herr and is licensed under Creative Commons (https://www.redmine.org/projects/redmine/wiki/logo)
+Logo is Copyright (C) 2009 Martin Herr and is licensed under Creative Commons (<https://www.redmine.org/projects/redmine/wiki/logo>)

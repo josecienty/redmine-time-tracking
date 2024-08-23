@@ -103,6 +103,7 @@
   "settings.general": "Allgemein",
   "settings.general.language": "Sprache",
   "settings.general.language.en": "Englisch (English)",
+  "settings.general.language.es": "Español (Fachero)",
   "settings.general.language.de": "Deutsch (German)",
   "settings.general.language.ru": "Russisch (Russian)",
   "settings.general.language.missing-hint": "Vermissen Sie Ihre Sprache?",

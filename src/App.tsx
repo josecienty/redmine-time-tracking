@@ -10,6 +10,7 @@ import { clsxm } from "./utils/clsxm";
 import { getPlatform } from "./utils/platform";
 import { createPopOut, getWindowLocationType } from "./utils/popout";
 
+
 const IssuesPage = lazy(() => import("./pages/IssuesPage"));
 const SettingsPage = lazy(() => import("./pages/SettingsPage"));
 const TimePage = lazy(() => import("./pages/TimePage"));

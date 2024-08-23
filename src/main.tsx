@@ -9,6 +9,7 @@ import QueryClientProvider from "./provider/QueryClientProvider.tsx";
 import RedmineApiProvider from "./provider/RedmineApiProvider.tsx";
 import SettingsProvider from "./provider/SettingsProvider.tsx";
 
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <HashRouter>

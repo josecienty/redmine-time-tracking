@@ -1,5 +1,5 @@
 {
-    "manifest_version": 3,
+    "manifest_version": 2,
     "version": "1.17.1",
     "name": "__MSG_extName__",
     "description": "__MSG_extDesc__",
@@ -11,7 +11,7 @@
     },
     "author": "crawlercode@outlook.de",
     "homepage_url": "https://github.com/CrawlerCode/redmine-time-tracking",
-    "action": {
+    "browser_action": {
         "default_title": "__MSG_extName__",
         "default_popup": "index.html?location=popup"
     },
@@ -20,12 +20,12 @@
         "open_in_tab": false
     },
     "background": {
-        "service_worker": "background.js"
+        "scripts": [
+            "background.js"
+        ]
     },
     "permissions": [
-        "storage"
-    ],
-    "host_permissions": [
+        "storage",
         "http://*/*",
         "https://*/*"
     ]

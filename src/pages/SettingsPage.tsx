@@ -20,7 +20,9 @@ import useSettings from "../hooks/useSettings";
 import { LANGUAGES } from "../provider/IntlProvider";
 import { Settings } from "../provider/SettingsProvider";
 import { formatHoursUsually } from "../utils/date";
+import browser from 'webextension-polyfill';
 
+//@ts-ignore
 const LANGUAGE_FLAGS: Record<(typeof LANGUAGES)[number], FlagComponent> = {
   en: GB,
   de: DE,
@@ -141,54 +143,54 @@ const SettingsPage = () => {
                         )}
                       </>
                     )) || (
-                      <>
-                        <div className="flex items-center gap-x-2">
-                          <div className="relative w-full">
-                            <h3 className="max-w-[285px] truncate text-base">
-                              <FontAwesomeIcon icon={faServer} className="mr-1 text-gray-800 dark:text-gray-200" />
-                              {settings.redmineURL}
-                            </h3>
-                            <p className="flex items-center gap-x-1.5">
-                              {myUser.isLoading ? (
-                                <>
-                                  <Indicator variant="loading" />
-                                  <FormattedMessage id="settings.redmine.connecting" />
-                                </>
-                              ) : myUser.isError ? (
-                                <>
-                                  <Indicator variant="danger" />
-                                  <FormattedMessage id="settings.redmine.connection-failed" />
-                                </>
-                              ) : myUser.data ? (
-                                <>
-                                  <Indicator variant="success" />
-                                  <FormattedMessage id="settings.redmine.connection-successful" />
-                                </>
-                              ) : (
-                                "Unknown status"
-                              )}
-                            </p>
-                            {myUser.isError && myUser.error && <p className="text-red-500 dark:text-red-400">{myUser.error.message}</p>}
-                            {myUser.data && (
-                              <p>
-                                <FormattedMessage
-                                  id="settings.redmine.hello-user"
-                                  values={{
-                                    firstName: myUser.data.firstname,
-                                    lastName: myUser.data.lastname,
-                                    accountName: myUser.data.login,
-                                    strong: (children) => <strong>{children}</strong>,
-                                  }}
-                                />
+                        <>
+                          <div className="flex items-center gap-x-2">
+                            <div className="relative w-full">
+                              <h3 className="max-w-[285px] truncate text-base">
+                                <FontAwesomeIcon icon={faServer} className="mr-1 text-gray-800 dark:text-gray-200" />
+                                {settings.redmineURL}
+                              </h3>
+                              <p className="flex items-center gap-x-1.5">
+                                {myUser.isLoading ? (
+                                  <>
+                                    <Indicator variant="loading" />
+                                    <FormattedMessage id="settings.redmine.connecting" />
+                                  </>
+                                ) : myUser.isError ? (
+                                  <>
+                                    <Indicator variant="danger" />
+                                    <FormattedMessage id="settings.redmine.connection-failed" />
+                                  </>
+                                ) : myUser.data ? (
+                                  <>
+                                    <Indicator variant="success" />
+                                    <FormattedMessage id="settings.redmine.connection-successful" />
+                                  </>
+                                ) : (
+                                  "Unknown status"
+                                )}
                               </p>
-                            )}
-                            <Button className="absolute bottom-0 right-0" size="sm" onClick={() => setEditRedmineInstance(true)}>
-                              <FormattedMessage id="settings.redmine.edit" />
-                            </Button>
+                              {myUser.isError && myUser.error && <p className="text-red-500 dark:text-red-400">{myUser.error.message}</p>}
+                              {myUser.data && (
+                                <p>
+                                  <FormattedMessage
+                                    id="settings.redmine.hello-user"
+                                    values={{
+                                      firstName: myUser.data.firstname,
+                                      lastName: myUser.data.lastname,
+                                      accountName: myUser.data.login,
+                                      strong: (children) => <strong>{children}</strong>,
+                                    }}
+                                  />
+                                </p>
+                              )}
+                              <Button className="absolute bottom-0 right-0" size="sm" onClick={() => setEditRedmineInstance(true)}>
+                                <FormattedMessage id="settings.redmine.edit" />
+                              </Button>
+                            </div>
                           </div>
-                        </div>
-                      </>
-                    )}
+                        </>
+                      )}
                   </div>
                 </Fieldset>
 
@@ -283,7 +285,7 @@ const SettingsPage = () => {
 };
 
 const Info = () => {
-  const { name, version, version_name } = chrome.runtime.getManifest();
+  const { name, version, version_name } = browser.runtime.getManifest();
 
   return (
     <>
@@ -291,7 +293,7 @@ const Info = () => {
         <Fieldset
           legend={
             <>
-              <a href="https://chrome.google.com/webstore/detail/redmine-time-tracking/ldcanhhkffokndenejhafhlkapflgcjg" target="_blank" tabIndex={-1} className="hover:underline">
+              <a href="https://browser.google.com/webstore/detail/redmine-time-tracking/ldcanhhkffokndenejhafhlkapflgcjg" target="_blank" tabIndex={-1} className="hover:underline">
                 {name}
               </a>
               <span className="mx-1 text-xs">-</span>

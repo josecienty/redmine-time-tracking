@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import browser from 'webextension-polyfill';
 
 type PropTypes = {
   text: string;
@@ -7,11 +8,11 @@ type PropTypes = {
 
 const BrowserNotificationBadge = ({ text, backgroundColor }: PropTypes) => {
   useEffect(() => {
-    chrome.action.setBadgeBackgroundColor({ color: backgroundColor });
+    browser.action.setBadgeBackgroundColor({ color: backgroundColor });
   }, [backgroundColor]);
 
   useEffect(() => {
-    chrome.action.setBadgeText({
+    browser.action.setBadgeText({
       text: text,
     });
   }, [text]);

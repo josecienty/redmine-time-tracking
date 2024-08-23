@@ -3,6 +3,7 @@ import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { ReactNode, Suspense, lazy, useEffect } from "react";
 import useStorage from "../hooks/useStorage";
+import browser from 'webextension-polyfill';
 
 type PropTypes = {
   children: ReactNode;
@@ -21,9 +22,12 @@ const queryClient = new QueryClient({
 
 const persister = createAsyncStoragePersister({
   storage: {
-    getItem: async (key) => (await chrome.storage.local.get(key))[key],
-    setItem: (key, value) => chrome.storage.local.set({ [key]: value }),
-    removeItem: (key) => chrome.storage.local.remove(key),
+    //@ts-ignore
+    getItem: async (key) => (await browser.storage.local.get(key))[key],
+    //@ts-ignore
+    setItem: (key, value) => browser.storage.local.set({ [key]: value }),
+    //@ts-ignore
+    removeItem: (key) => browser.storage.local.remove(key),
   },
   throttleTime: 1000,
 });
@@ -47,7 +51,7 @@ const QueryClientProvider = ({ children }: PropTypes) => {
     <PersistQueryClientProvider
       client={queryClient}
       persistOptions={{
-        buster: chrome.runtime.getManifest().version,
+        buster: browser.runtime.getManifest().version,
         persister: persister,
         maxAge: CACHE_TIME,
       }}

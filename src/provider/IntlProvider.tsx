@@ -7,15 +7,17 @@ import useSettings from "../hooks/useSettings";
 import messagesDE from "../lang/de.json";
 import messagesEN from "../lang/en.json";
 import messagesRU from "../lang/ru.json";
+import messagesES from "../lang/es.json";
 
 import { de as dateFnsLocalDE, enUS as dateFnsLocalEN, ru as dateFnsLocalRu } from "date-fns/locale";
 
 import { German as flatpickrDE } from "flatpickr/dist/l10n/de.js";
 import { english as flatpickrEN } from "flatpickr/dist/l10n/default";
 import { Russian as flatpickrRU } from "flatpickr/dist/l10n/ru.js";
+import { Spanish as flatpickrES } from "flatpickr/dist/l10n/es.js";
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const LANGUAGES = ["en", "de", "ru"] as const;
+export const LANGUAGES = ["en", "de", "ru", "es"] as const;
 
 type Language = (typeof LANGUAGES)[number];
 
@@ -52,6 +54,11 @@ const IntlProvider = ({ children }: PropTypes) => {
       messages = messagesRU;
       dateFnsLocal = dateFnsLocalRu;
       flatpickrLocal = flatpickrRU;
+      break;
+    case "es":
+      messages = messagesES;
+      dateFnsLocal = dateFnsLocalRu;
+      flatpickrLocal = flatpickrES;
       break;
   }
 

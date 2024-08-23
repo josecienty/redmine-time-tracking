@@ -16,7 +16,7 @@ export default defineConfig({
   },
 
   projects: [
-    ...["en", "de", "ru"]
+    ...["en", "de", "ru", "es"]
       .map((locale) =>
         (["dark", "light"] as const).map((colorScheme) => ({
           name: `Chrome | ${locale} (${colorScheme})`,
